@@ -23,7 +23,7 @@ def next_stove(mekici, timings, stove_timers): # check if we have a stove that c
 
 def list_solution(mekici, stoves, timings, stove_timers=None):
     """
-    The solution takes the greasy approach up until we have a stove which can finish the task faster
+    The solution takes the gready approach up until we have a stove which can finish the task faster
 
     :param mekici: the current number of mekici
     :param stoves: the number of stoves
