@@ -9,13 +9,17 @@ def next_stove(mekici, timings, stove_timers): # check if we have a stove that c
     """
     next_available_stove = stove_timers.index((min(stove_timers)))  # Find the next available stove
 
+
+
     for index in range(len(timings)): # for each stove
 
         time_required_to_finish_the_rest = timings[index] * mekici # calculate the time required to finish the task for the current stove
 
-        if (stove_timers[index] + time_required_to_finish_the_rest) < (stove_timers[next_available_stove] + timings[next_available_stove]):
+        if (stove_timers[index] + time_required_to_finish_the_rest) <= (stove_timers[next_available_stove] + timings[next_available_stove]):
         #check if the current stove can finish the task faster, than the next available stove
         #+ this is the moment we stop with the grready approach, becuase we have a stove which can finish the task faster
+            stove_timers.pop(next_available_stove)
+            timings.pop(next_available_stove)
             return index
 
     return next_available_stove
@@ -55,7 +59,7 @@ if __name__ == "__main__":
         stoves = int(numbers_mekici_and_stoves[1])
 
         timings_string = input().split(" ")
-        timings = [int(time) for time in timings_string]
+        timings = sorted([int(time) for time in timings_string])
 
 
         if mekici <= 0: # in case of an input error, there can be another input errors but it is not requested to handle such
